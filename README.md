@@ -2,6 +2,8 @@
 https://synesisitslt.netlify.app/
 
 
+🌐 **Live Demo:** https://krcs2026.github.io/SLT-Calculator-for-Tender/
+
 তফসিল-১৮ অনুযায়ী Significantly Low-priced Tender (SLT) নির্ণয়ের ওয়েব অ্যাপ।
 
 ## চালানো
