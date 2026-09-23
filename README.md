@@ -1,4 +1,6 @@
 # SLT Tender Evaluation System — PPR 2025
+https://synesisitslt.netlify.app/
+
 
 তফসিল-১৮ অনুযায়ী Significantly Low-priced Tender (SLT) নির্ণয়ের ওয়েব অ্যাপ।
 
