@@ -1,0 +1,83 @@
+/* SLT Tender Evaluation — PPR 2025 | Schedule-18 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap');
+
+:root{
+  --header-bg:#1a3a5c; --accept:#28a745; --reject:#dc3545; --winner:#ffc107;
+  --bg:#f4f6f9; --card-bg:#ffffff; --text:#212529; --border:#dee2e6;
+  --muted:#6c757d; --radius:12px; --shadow:0 4px 14px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Noto Sans Bengali','Hind Siliguri',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:0 16px}
+.app-header{background:linear-gradient(135deg,#1a3a5c,#274d75);color:#fff;padding:24px 0;margin-bottom:20px}
+.header-inner{display:flex;gap:16px;align-items:center}
+.logo{font-size:44px}
+.app-header h1{margin:0;font-size:26px}
+.subtitle,.subtitle-bn{margin:2px 0;opacity:.9}
+.header-badge{margin-left:auto;background:var(--winner);color:#333;font-weight:700;border-radius:10px;padding:8px 14px;text-align:center;line-height:1.2}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:18px;transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.card h2{margin-top:0;font-size:20px;border-bottom:2px solid var(--bg);padding-bottom:8px}
+.step-no{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--header-bg);color:#fff;align-items:center;justify-content:center;margin-right:8px;font-size:16px}
+.form-row label,.form-group label{font-weight:600;display:block;margin-bottom:6px}
+input[type=number],input[type=text],input[type=date]{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:16px;font-family:inherit;transition:border-color .2s,box-shadow .2s}
+input:focus{outline:none;border-color:var(--header-bg);box-shadow:0 0 0 3px rgba(26,58,92,.15)}
+.inline-controls{display:flex;gap:10px}
+.inline-controls input{flex:1}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.radio-group{display:flex;gap:16px;background:var(--bg);padding:8px 12px;border-radius:8px}
+.hint{color:var(--muted);font-size:13px}
+.empty-note{color:var(--muted);background:var(--bg);padding:12px;border-radius:8px;text-align:center}
+.comp-row{display:grid;grid-template-columns:40px 1fr 1fr 36px;gap:8px;align-items:center;margin-bottom:8px}
+.comp-row .sl{font-weight:700;text-align:center;background:var(--bg);border-radius:8px;padding:10px 0}
+.comp-row .rm{border:none;background:#ffe0e3;border-radius:8px;cursor:pointer;font-size:16px;padding:8px;transition:background .2s}
+.comp-row .rm:hover{background:var(--reject);color:#fff}
+.btn{border:none;border-radius:8px;padding:11px 20px;font-size:16px;font-family:inherit;font-weight:600;cursor:pointer;transition:transform .15s,opacity .15s,background .2s}
+.btn:hover{transform:translateY(-1px);opacity:.95}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--header-bg);color:#fff}
+.btn-success{background:var(--accept);color:#fff}
+.btn-outline{background:#fff;border:2px solid var(--header-bg);color:var(--header-bg)}
+.actions{display:flex;gap:12px;justify-content:center}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{border:1px solid var(--border);padding:10px;text-align:left}
+.calc-table th{width:55%;background:var(--bg)}
+.eval-table thead th{background:var(--header-bg);color:#fff}
+.floor-val{font-weight:700;color:var(--header-bg)}
+.formula-box{background:#fff8e1;border:1px dashed var(--winner);border-radius:8px;padding:12px;margin-top:10px}
+.formula-box code{display:block;margin:6px 0;word-break:break-word}
+tr.row-slt{background:#fde8ea}
+tr.row-ok{background:#e6f4ea}
+tr.row-l1{background:#fff4cc;font-weight:700}
+tr.row-rej{background:#f0f0f0;color:#666}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:13px;margin:2px;color:#fff}
+.pill-slt{background:var(--reject)} .pill-ok{background:var(--accept)}
+.pill-l1{background:#b8860b} .pill-rej{background:#6c757d}
+.legend{margin-top:8px}
+.winner{background:linear-gradient(180deg,#fffdf0,#fff);border:2px solid var(--winner)}
+.winner-text{font-size:20px;font-weight:700}
+.winner-actions{display:flex;gap:10px;flex-wrap:wrap}
+.special{border-left:6px solid var(--reject);background:#fff5f5}
+.mobile-cards{display:none}
+.hidden{display:none!important}
+.footer{text-align:center;color:var(--muted);padding:18px;font-size:14px}
+/* প্রিন্ট: শুধু ফলাফল */
+@media print{
+  .app-header,.actions,.winner-actions{display:none!important}
+  .card{box-shadow:none}
+  body{background:#fff}
+}
+@media (max-width:768px){
+  .grid-2{grid-template-columns:1fr}
+  .inline-controls{flex-direction:column}
+  .eval-table{display:none}
+  .mobile-cards{display:grid;gap:10px}
+  .m-card{border:1px solid var(--border);border-radius:10px;padding:12px;background:#fff}
+  .m-card.slt{border-left:6px solid var(--reject)}
+  .m-card.ok{border-left:6px solid var(--accept)}
+  .m-card.l1{border-left:6px solid var(--winner);background:#fffbe6}
+  .m-card.rej{border-left:6px solid #999;background:#f7f7f7}
+  .app-header h1{font-size:20px}
+  .comp-row{grid-template-columns:30px 1fr 1fr 32px}
+}

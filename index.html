@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SLT Tender Evaluation System — PPR 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>" />
+</head>
+<body>
+<header class="app-header">
+<div class="container header-inner">
+<div class="logo">⚖️</div>
+<div>
+<h1>SLT Tender Evaluation System</h1>
+<p class="subtitle">PPR 2025 | Schedule-18 | Significantly Low Tender Calculator</p>
+<p class="subtitle-bn">তফসিল-১৮ অনুযায়ী SLT নির্ণয়</p>
+</div>
+<div class="header-badge">PPR<br />2025</div>
+</div>
+</header>
+<main class="container">
+<section class="card">
+<h2><span class="step-no">১</span> কোম্পানির সংখ্যা</h2>
+<div class="form-row">
+<label for="companyCount">কোম্পানির সংখ্যা লিখুন</label>
+<div class="inline-controls">
+<input type="number" id="companyCount" min="1" max="50" value="5" />
+<button id="generateFields" class="btn btn-primary">ফিল্ড তৈরি করুন</button>
+</div>
+<small class="hint">সর্বোচ্চ ৫০টি দরদাতা।</small>
+</div>
+</section>
+<section class="card">
+<h2><span class="step-no">২</span> কোম্পানির তথ্য</h2>
+<div id="companyFields"><p class="empty-note">উপরে সংখ্যা দিয়ে ফিল্ড তৈরি করুন।</p></div>
+</section>
+<section class="card">
+<h2><span class="step-no">৩</span> সরকারি তথ্য (OCE / NPPI)</h2>
+<div class="grid-2">
+<div class="form-group">
+<label for="oce">দাপ্তরিক প্রাক্কলিত মূল্য (OCE) — টাকা</label>
+<input type="number" id="oce" value="20000000" />
+</div>
+<div class="form-group">
+<label for="nppiValue">NPPI — টাকা</label>
+<input type="number" id="nppiValue" value="18000000" />
+</div>
+</div>
+</section>
+<section class="card actions">
+<button id="calculateBtn" class="btn btn-success">হিসাব করুন</button>
+<button id="resetBtn" class="btn btn-outline">রিসেট</button>
+</section>
+<section id="resultPanel" class="card hidden">
+<h2>গণনার ফলাফল</h2>
+<div class="table-wrap"><table class="calc-table"><tbody>
+<tr><th>দরদাতার সংখ্যা (n)</th><td id="rCount">—</td></tr>
+<tr><th>দরের গড় (xb_bid)</th><td id="rAvg">—</td></tr>
+<tr><th>OCE</th><td id="rOce">—</td></tr>
+<tr><th>NPPI (টাকায়)</th><td id="rNppi">—</td></tr>
+<tr><th>ভারিত গড় (x) = 0.5xbid + 0.2OCE + 0.3NPPI</th><td id="rWAvg">—</td></tr>
+<tr><th>SD (sd)</th><td id="rSd">—</td></tr>
+<tr><th>Floor = x - sd</th><td id="rFloor" class="floor-val">—</td></tr>
+</tbody></table></div>
+<div class="formula-box"><strong>সূত্র:</strong>
+<code>x = 0.5*xbid + 0.2*OCE + 0.3*NPPI | sd = sqrt[sum(pi-xbid)^2/n] | Floor = x - sd</code>
+</div>
+</section>
+<section id="evalSection" class="card hidden">
+<h2>চূড়ান্ত মূল্যায়ন টেবিল</h2>
+<div class="table-wrap"><table class="eval-table">
+<thead><tr><th>ক্রম</th><th>কোম্পানি</th><th>দর (টাকা)</th><th>অবস্থা</th><th>মন্তব্য</th></tr></thead>
+<tbody id="evaluationTable"></tbody>
+</table></div>
+<div id="mobileCards" class="mobile-cards"></div>
+<p class="legend"><span class="pill pill-slt">SLT = লাল</span>
+<span class="pill pill-ok">গ্রহণযোগ্য = সবুজ</span>
+<span class="pill pill-l1">L1 = সোনালি</span>
+<span class="pill pill-rej">বাতিল = ধূসর</span></p>
+</section>
+<section id="winnerCard" class="card winner hidden">
+<h2>ফলাফল</h2>
+<p id="winnerText" class="winner-text">—</p>
+<p id="winnerSub" class="hint"></p>
+<div class="winner-actions">
+<button id="pdfBtn" class="btn btn-primary">PDF ডাউনলোড</button>
+<button id="printBtn" class="btn btn-outline">প্রিন্ট</button>
+<button id="newCalcBtn" class="btn btn-success">নতুন হিসাব</button>
+</div>
+</section>
+<section id="specialCasePanel" class="card special hidden">
+<h2>বিশেষ কেস</h2>
+<div id="specialCaseText"></div>
+</section>
+</main>
+<footer class="footer"><div class="container">
+<p>SLT Tender Evaluation System — PPR 2025 (Schedule-18)</p>
+</div></footer>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
